@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\Test\\Test.csproj",
-      "projectName": "Test",
-      "projectPath": "D:\\Projects\\Test\\Test.csproj",
+      "projectUniqueName": "D:\\PROJECTS\\Algebradora\\Algebradora.csproj",
+      "projectName": "Algebradora",
+      "projectPath": "D:\\PROJECTS\\Algebradora\\Algebradora.csproj",
       "packagesPath": "C:\\Users\\casa\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\Test\\obj\\",
+      "outputPath": "D:\\PROJECTS\\Algebradora\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\casa\\AppData\\Roaming\\NuGet\\NuGet.Config"
