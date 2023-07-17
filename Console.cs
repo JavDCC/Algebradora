@@ -5,8 +5,5 @@
 
 
 
-
-
-
 ReadLine();
 Clear();
