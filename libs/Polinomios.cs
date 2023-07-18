@@ -11,8 +11,22 @@
         List<string> l = new List<string>();
         string temp = "";
         //Convirtiendo el string en una lista de elementos
-        for (int i = 0; i < s.Length; i++)
-        { if (s[i] == ',') { l.Add(temp); temp = ""; i++; } else { temp += s[i]; } }
+        for (int i = 0; i <= s.Length; i++)
+        {
+            if (i == s.Length)
+            {
+                l.Add(temp);
+                break;
+            }
+            else if (s[i] == ',')
+            {
+                l.Add(temp); temp = "";
+            }
+            else
+            {
+                temp += s[i];
+            }
+        }
         return l;
     }
 
@@ -44,7 +58,7 @@
     {
         //Eliminar caracteres no deseados de haber alguno
         for (int i = 0; i < s.Length; i++)
-        { if (!"1234567890x+-".Contains(s[i])) s = s.Remove(i, 1); i--; }
+        { if (!"1234567890x+-".Contains(s[i])) { s = s.Remove(i, 1); i--; } }
         return s;
     }
 
