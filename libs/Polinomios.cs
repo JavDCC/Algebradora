@@ -105,8 +105,6 @@
 
     public static Polinomio SumarPolinomios(Polinomio A, Polinomio B) => new Polinomio(A.ID + "+" + B.ID, A.Expresion + "+" + B.Expresion);
 
-
-
     //Identificador del objeto
     public string ID { get; }
     //Expresion del polinomio
