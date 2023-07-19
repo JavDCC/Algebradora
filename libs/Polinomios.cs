@@ -4,6 +4,7 @@
     {
         this.ID = id;
         this.Coeficientes = Distribute(Check(Cut(sample.ToLower())));
+        this.Expresion = Build();
     }
 
     private List<string> Cut(string s)
@@ -11,6 +12,14 @@
         List<string> l = new List<string>();
         string temp = "";
         //Convirtiendo el string en una lista de elementos
+        for (int i = 0; i < s.Length; i++)
+        {
+
+            //
+
+        }
+
+
         for (int i = 0; i <= s.Length; i++)
         {
             if (i == s.Length)
@@ -34,7 +43,12 @@
     {
         //Revisar que elementos son validos o no
         for (int i = 0; i < l.Count; i++)
-        { if (!IsValid(l[i])) { l.Remove(l[i]); i--; } else { l[i] = Fix(l[i]); } }
+        {
+            //Arreglar el string
+            string temp = Fix(l[i]);
+            //Eliminar el string si no es validos
+            if (!IsValid(temp)) { l.Remove(l[i]); i--; }
+        }
         return l;
     }
 
@@ -84,28 +98,29 @@
         return Values;
     }
 
-    public override string ToString()
+    private string Build()
     {
-        string temp = this.ID + ":\n\t";
-
+        string temp = "";
         for (int i = 0; i < this.Coeficientes.Length; i++)
         {
-            switch (this.Coeficientes[i])
+            if (this.Coeficientes[i] != 0)
             {
-                case 0: continue;
-                case > 0:
-                    temp += "+" + this.Coeficientes[i] + "x" + (this.Grado - i);
-                    break;
-                case < 0:
-                    temp += this.Coeficientes[i] + "x" + (this.Grado - i);
-                    break;
+                temp = this.Coeficientes[i].ToString() + "x" + i + temp;
+                if (i < (this.Coeficientes.Length - 1) && this.Coeficientes[i] > 0)
+                { temp = "+" + temp; }
             }
         }
-
-        return temp + "\n";
+        return temp;
     }
 
-    string ID; //Identificador del objeto
-    int Grado = 0; //Grado del polinomio
-    int[] Coeficientes; //Valores de los coeficientes del polinomio
+    public override string ToString() => this.ID + " = " + this.Expresion;
+
+    //Identificador del objeto
+    public string ID { get; }
+    //Expresion del polinomio
+    public string Expresion { get; private set; }
+    //Grado del polinomio 
+    public int Grado { get; private set; } = 0;
+    //Valores de los coeficientes del polinomio
+    private int[] Coeficientes;
 }
