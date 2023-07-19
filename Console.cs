@@ -1,11 +1,12 @@
 ﻿using static System.Console;
 
-Polinomio P = new Polinomio("P", "+2x1,+3x0, -4x0, -5x2");
+Polinomio P = new Polinomio("P", "2x1");
+Polinomio Q = new Polinomio("Q", "3x0");
 
-System.Console.WriteLine(P.Expresion);
+System.Console.WriteLine(Polinomio.SumarPolinomios(P, Q));
 
 
 
 
-ReadLine();
+ReadKey();
 Clear();
