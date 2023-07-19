@@ -3,39 +3,37 @@
     public Polinomio(string id, string sample)
     {
         this.ID = id;
-        this.Coeficientes = Distribute(Check(Cut(sample.ToLower())));
+        this.Coeficientes = Distribute(Check(Cut(Fix(sample.ToLower()))));
         this.Expresion = Build();
+    }
+
+    private string Fix(string s)
+    {
+        //Eliminar caracteres no validos
+        for (int i = 0; i < s.Length; i++)
+        { if (!"1234567890x+-".Contains(s[i])) { s = s.Remove(i, 1); i--; } }
+        return s;
     }
 
     private List<string> Cut(string s)
     {
         List<string> l = new List<string>();
-        string temp = "";
-        //Convirtiendo el string en una lista de elementos
+        //Convertir el string en una lista de elementos
         for (int i = 0; i < s.Length; i++)
-        {
-
-            //
-
-        }
-
-
-        for (int i = 0; i <= s.Length; i++)
-        {
-            if (i == s.Length)
+            if (s[i] == 'x')
             {
-                l.Add(temp);
-                break;
+                int from = 0;
+                int to = 0;
+                for (int j = i; j >= 0; j--)
+                { if ("+-".Contains(s[j])) { from = j; break; } }
+                for (int k = i; k <= s.Length; k++)
+                {
+                    if (k == s.Length) { to = k; break; }
+                    else if ("+-".Contains(s[k])) { to = k; break; }
+                }
+                l.Add(s.Substring(from, (to - from)));
             }
-            else if (s[i] == ',')
-            {
-                l.Add(temp); temp = "";
-            }
-            else
-            {
-                temp += s[i];
-            }
-        }
+
         return l;
     }
 
@@ -44,10 +42,8 @@
         //Revisar que elementos son validos o no
         for (int i = 0; i < l.Count; i++)
         {
-            //Arreglar el string
-            string temp = Fix(l[i]);
-            //Eliminar el string si no es validos
-            if (!IsValid(temp)) { l.Remove(l[i]); i--; }
+            if (!IsValid(l[i]))
+            { l.Remove(l[i]); i--; }
         }
         return l;
     }
@@ -66,14 +62,6 @@
         if (Math.Max(s.LastIndexOf('+'), s.LastIndexOf('-')) > 0) return false;
         //Cumple con el formato '±axb' y es valido
         return true;
-    }
-
-    private string Fix(string s)
-    {
-        //Eliminar caracteres no deseados de haber alguno
-        for (int i = 0; i < s.Length; i++)
-        { if (!"1234567890x+-".Contains(s[i])) { s = s.Remove(i, 1); i--; } }
-        return s;
     }
 
     private int[] Distribute(List<string> l)
