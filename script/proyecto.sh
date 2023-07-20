@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#La direccion inicial del proyecto
+origin="$(pwd)"
 #El argumento pasado al script:
 arg=$1
 #La lista de comandos posibles para el script
@@ -34,23 +36,18 @@ else
                     dotnet run
                     ;;
                 "clean")
-
                     rm -rf bin obj
                     cd informe
                     list=$(ls)
                     for item in *; do
-                        echo "$item"
-                        if [ "$item" != ".tex" ]; then
-                            echo "echo"
+                        if [ "$item" != "informe.tex" ]; then
                             rm -rf "$item"
                         fi
                     done
                     cd ..
                     cd presentacion
                     for item in *; do
-                        echo "$item"
-                        if [ "$item" != ".tex" ]; then
-                            echo "echo"
+                        if [ "$item" != "presentacion.tex" ]; then
                             rm -rf "$item"
                         fi
                     done
@@ -58,11 +55,11 @@ else
                     ;;
                 "report")
                     cd informe
-                    pdflatex "informe.tex"
+                    pdflatex informe.tex
                     ;;
                 "slides")
                     cd presentacion
-                    pdflatex "presentacion.tex"
+                    pdflatex presentacion.tex
                     ;;
                 "show_report")
                     cd informe
