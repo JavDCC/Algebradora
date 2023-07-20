@@ -37,10 +37,23 @@ else
 
                     rm -rf bin obj
                     cd informe
-                    find x ! -name "*.tex" -exec rm -rf {} ';'
+                    list=$(ls)
+                    for item in *; do
+                        echo "$item"
+                        if [ "$item" != ".tex" ]; then
+                            echo "echo"
+                            rm -rf "$item"
+                        fi
+                    done
                     cd ..
                     cd presentacion
-                    find x ! -name "*.tex" -exec rm -rf {} ';'
+                    for item in *; do
+                        echo "$item"
+                        if [ "$item" != ".tex" ]; then
+                            echo "echo"
+                            rm -rf "$item"
+                        fi
+                    done
                     cd ..
                     ;;
                 "report")
