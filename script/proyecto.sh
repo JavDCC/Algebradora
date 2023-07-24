@@ -1,20 +1,24 @@
 #!/bin/bash
 
 #La direccion inicial del proyecto
-origin="$(pwd)"
+# a="$(pwd)"
+# origin="$0"/
+# origin="${origin//./}"
+
 #El argumento pasado al script:
 arg=$1
 #La lista de comandos posibles para el script
 posarg=("run" "clean" "report" "slides" "show_report" "show_slides")
+#El tipo de sistema operativo actual del equipo
+thisOS=$(echo "$OSTYPE" | tr '[:upper:]' '[:lower:]')
 
 echo "Javier David Coroas Cintra - C113 - Practicas Laborales MATCOM 2023"
 
 if [ "$0" != "./proyecto.sh" ] && [ "$0" != ".\proyecto" ]; then
     echo "Por precaucion, el script debe ser ejecutado desde la carpeta que lo contiene."
-    echo "Debe usar './proyecto.sh' o '.\proyecto.sh'."
 else
     if [ $# -lt 1 ]; then
-        echo -e "Error: El comando debe contener un argumento."
+        echo "Error: El comando debe contener un argumento."
         echo "Argumentos: 'run' 'clean' 'report' 'slides' 'show_report' 'show_slides'."
     else
         valid=false
@@ -38,7 +42,6 @@ else
                 "clean")
                     rm -rf bin obj
                     cd informe
-                    list=$(ls)
                     for item in *; do
                         if [ "$item" != "informe.tex" ]; then
                             rm -rf "$item"
@@ -63,14 +66,50 @@ else
                     ;;
                 "show_report")
                     cd informe
-                    #
+                    if ! [ -f "informe.pdf" ]; then
+                        pdflatex informe.tex
+                    fi
+                    case $thisOS in
+                    "msys" | "cygwin")
+                        start "informe.pdf"
+                        ;;
+                    "darwin")
+                        open "informe.pdf"
+                        ;;
+                    "linux-gnu")
+                        xdg-open "informe.pdf"
+                        ;;
+                    *)
+                        echo "Error: Sistema operativo desconocido. No se pudo abrir el archivo."
+                        ;;
+                    esac
                     ;;
                 "show_slides")
                     cd presentacion
-                    #
+                    if ! [ -f "presentacion.pdf" ]; then
+                        pdflatex presentacion.tex
+                    fi
+                    case $thisOS in
+                    "msys" | "cygwin")
+                        start "presentacion.pdf"
+                        ;;
+                    "darwin")
+                        open "presentacion.pdf"
+                        ;;
+                    "linux-gnu")
+                        xdg-open "presentacion.pdf"
+                        ;;
+                    *)
+                        echo "Error: Sistema operativo desconocido. No se pudo abrir el archivo."
+                        ;;
+                    esac
                     ;;
                 esac
             fi
         fi
     fi
 fi
+
+echo -e "\nPresiona cualquier tecla para continuar..."
+read -n 1 -s -r
+reset
