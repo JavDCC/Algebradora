@@ -40,18 +40,18 @@ else
                     dotnet run
                     ;;
                 "clean")
-                    rm -rf bin obj
+                    rm -rf -v bin obj
                     cd informe
                     for item in *; do
                         if [ "$item" != "informe.tex" ]; then
-                            rm -rf "$item"
+                            rm -rf -v "$item"
                         fi
                     done
                     cd ..
                     cd presentacion
                     for item in *; do
                         if [ "$item" != "presentacion.tex" ]; then
-                            rm -rf "$item"
+                            rm -rf -v "$item"
                         fi
                     done
                     cd ..

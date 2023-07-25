@@ -1,13 +1,80 @@
-\documentclass{article}
+\documentclass[a4paper,12pt]{article}
 
-\title{Informe del Proyecto de las Practicas Laborales}
+\title{Informe del Proyecto de las Practicas Profesionales}
 \author{Javier D. Coroas Cintra C113}
 \date{2023}
+
+\usepackage[spanish]{babel}
 
 \begin{document}
 
 \maketitle
 
-texto de ejemplo
+\begin{abstract}
+    Algebradora inicia con motivo de la evaluacion de las practicas profesionales del curso 2023, en la carrera de Ciencias de la Computacion, de la facultad MATCOM de la Universidad de La Habana.
+\end{abstract}
+
+\section{Introducción}
+
+Algebradora es una calculadora destinada a su uso en los cursos de Algebra. Desde numeros complejos, hasta polinomios, matrices y demas elementos algebraicos impartidos en el curso de la asignatura de Algebra 1 en MATCOM. Aun en desarrollo, los objetivos de este proyecto son:
+
+\begin{itemize}
+    \item Ayudar a profundizar los conocimientos de otras asignaturas como Programacion, vital para el desarrollo de este proyecto.
+    \item Servir de herramienta a los estudiantes, ayudando en la comprension de diversos contenidos.
+    \item Mostrar la efectividad de las practicas profesionales al acceder los estudiantes a nuevos recursos como:
+          \begin{itemize}
+              \item Git y GiHub, vitales para cualquier programador.
+              \item El uso de \LaTeX, en la generacion de documentos cientificos.
+              \item El desarrollo de scripts multiplataforma con Bash.
+          \end{itemize}
+\end{itemize}
+
+\newpage
+
+\section{Desarrollo}
+El proyecto Algebradora consiste, al momento de redactar este documento, de los siguientes elementos dispoibles en el repositorio de GitHub:
+\begin{itemize}
+    \item Una aplicacion de consola \verb|Console.cs|, la interfaz empleada por su baja demanda de recursos y compatibilidad en la gran mayoria de plataformas.
+    \item Una libreria de clases \verb|Polinomios.cs|, que contiene la informacion correspondiente al trabajo con objetos de tipo Polinomio.
+    \item Dos archivos \verb|Informe.tex| y \verb|Presentacion.tex|, para generar los respectivos archivos \verb|.pdf| con los detalles del proyecto.
+    \item Un archivo shell \verb|Proyecto.sh|, que es un script programado en \verb|Bash| con comandos para, entre otras cosas, ejecutar el proyecto.
+\end{itemize}
+
+La funcionalidad del proyecto se encuentra algo limitada al ser el mismo un trabajo en progreso. Pero cumple los siguientes propositos:
+\begin{itemize}
+    \item Permite a los usuarios generar objetos de tipo Polinomio.
+    \item La operacion de suma entre los polinomios generados es posible.
+    \item Por comodidad, los resultados son guardados automaticamente.
+\end{itemize}
+
+Ejemplo:
+\begin{center}
+    \begin{enumerate}
+        \item Entrada del usuario: \verb|2x3-4x2+6x1-10x0|
+        \item Genera el polinomio:
+              \begin{equation}
+                  P(x) = 2x^3 - 4x^2 + 6x^1 - 10x^0
+              \end{equation}
+        \item Efectuar \verb|P(x) + P(x)|:
+              \begin{equation}
+                  P(x)+P(x) = 4x^3 - 8x^2 + 12x^1 - 20x^0
+              \end{equation}
+    \end{enumerate}
+\end{center}
+
+En el ejemplo anterior, el usuario genera un polinomio y halla su suma con el mismo. Para los terminos con exponente 1 y 0, por lograr una mejor comprension, se mantienen presentes al representar los polinomios.
+
+\newpage
+
+\section{Conclusiones}
+En un futuro pudieran implementarse clases y metodos para generar y operar con distintos elementos algebraicos como matrices y numeros complejos. O incluso el alcance del proyecto pudiera expandirse y abarcar otras asignaturas de la carrera, como graficar funciones en Analisis Matematico o trabajar con proposiciones en Logica. Con los conocimientos impartidos en estas practicas profesionales, es mas que posible lograr eso y muchisimo mas.
+
+\section{Recursos}
+Para la realizacion de este proyecto se usaron los siguientes recursos:
+\begin{itemize}
+    \item Visual Studio Code: edicion, compilacion y ejecucion del codigo.
+    \item MikTeX Console: instalacion y administracion de paquetes de \LaTeX.
+    \item Git, Git Bash: control de versiones y ejecucion de comandos de script.
+\end{itemize}
 
 \end{document}

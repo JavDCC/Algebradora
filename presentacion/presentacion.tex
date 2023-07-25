@@ -1,13 +1,82 @@
 \documentclass{article}
 
-\title{Presentacion del Proyecto de las Practicas Laborales}
+\title{Presentacion del Proyecto de las Practicas Profesionales}
 \author{Javier D. Coroas Cintra C113}
 \date{2023}
+
+\usepackage{geometry}
+
+\usepackage[spanish]{babel}
+
+\usepackage{url}
+
+\geometry{paperwidth=12cm,paperheight=8cm}
 
 \begin{document}
 
 \maketitle
 
-texto de ejemplo
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Introduccion al proyecto}
+El proyecto Algebradora, como indica su nombre, es una calculadora para elementos algebraicos.\\\\
+Numeros complejos, polinomios, matrices.\\¡Quizas hasta espacios vectoriales!\\\\
+Sumas, restas, multiplicaciones, divisiones, potencias y raices; las operaciones que se puedan realizar entre dichos elementos tambien son objetivos de este proyecto.
+
+\newpage
+
+\section{Etapa de Desarrollo}
+La idea para el proyecto Algebradora surge ante la necesidad de crear un proyecto nuevo, original y funcional que entregar para la evaluacion de las practicas profesionales.\\\\
+Resolviendo ejercicios de Algebra me llego la idea:\\\\
+\textit{¿Por que pasar 2 minutos calculando, si puedo hacer en 2 dias un programa que lo haga por mi?} \verb|:D|\\\\
+...y asi nacio la idea de Algebradora.\\
+Como con muchos otros proyectos, la etapa inicial estuvo plagada de indecisiones, arrepentimientos y un poco de desesperacion siempre que creia que no lo terminaria a tiempo.\\\\
+Pero el que persevera, triunfa. Y asi fue.\\\\
+Terminada la clase Polinomio e implementada la suma de los mismos, pense en continuar el desarrollo de clases para numeros complejos y matrices tambien.\\\\
+Pero sin saber mucho sobre \verb|Bash| y \LaTeX, decidi invertir mas de mi tiempo en esos aspectos del proyecto.\\
+Y menos mal que asi lo hice...\\\\
+Conociendo muy poco de \LaTeX, y nada de \verb|Bash|, esa fue la mejor decision que pude haber tomado.\\\\
+Ni en la presentacion ni en el informe he incluido los enlaces a las fuentes no muy oficiales (principalmente tutoriales de YouTube) de las que he logrado adquirir los conocimientos como para desarrollar este proyecto completamente desde cero, ya que opino que una bibliografia sin editoriales y paginas no aparentaria el rigor cientifico que estos articulos deberian tener.\\\\
+Dejando de lado detalles insignificantes y comentarios innecesarios, el desarrollo de este proyecto ha sido una experiencia muy gratificante.\\\\
+Y aunque pudiera en esta presentacion discutir todos los detalles tecnicos del proyecto en si, prefiero no hacerlo.\\\\
+¿Que puedo decir del proyecto?\\\\
+Es simple, pero funciona. Aunque solo permite crear objetos de tipo Polinomio y sumarlos. Pero lo hace de maravillas o al menos asi lo veo yo.\\\\
+Esta implementado de tal manera que ignora caracteres no deseados, expresiones innecesarias y terminos con coeficiente igual a 0:
+\begin{equation}
+    'o9xf3-4X0 ++t3X4' = 3x^4 + 9x^3 - 4x^0
+\end{equation}
+Si llegaran a introducirse terminos de igual exponente, se sumarian sus coeficientes:
+\begin{equation}
+    2x1+3x1+4x2+5x2+6x1+3x3 = 3x^3 + 9x^2 + 11x^1
+\end{equation}
+No sera una calculadora cientifica, pero funciona y es eficiente, a su manera, claro.\\\\
+¿Que hay de los archivos \verb|.tex| y  el script en \verb|Bash|?\\\\
+Si estas leyendo esto desde el programa predeterminado para abrir archivos \verb|.pdf|, sin importar que sistema operativo estes usando (Windows, macOS o Linux), como yo que lo estoy leyendo desde el VS Code, entonces ambos aspectos del proyecto tambien funcionan.\\\\
+No tendran la calidad de una publicacion cientifica de fama mundial, pero estan hechos con dedicacion, esfuerzo y ya ni se cuantos megas...\\
+
+\newpage
+
+¿Si ya todo funciona, por que sigo escribiendo?\\\\
+Ni idea. Parece que le he cogido el gusto a escribir en \LaTeX. O no se como hacer una presentacion con caracter formal e imaginar que cada palabra escrita la recito en voz alta para el lector seria buena idea. ¿Quien sabe?\\\\
+Solo se que a pesar de a pesar de todos los trabajos y dificultades por los que he pasado haciendo este proyecto, ha valido la pena por todo lo que he aprendido.\\\\
+
+\newpage
+
+\section{Accesibilidad al repositorio}
+\begin{center}
+    \textit{Algebradora, un proyecto con bastante potencial.}
+\end{center}
+Almacenar los datos del proyecto en GitHub y convertirlo en un proyecto de codigo abierto, permite no solo que cualquiera pueda tener acceso al proyecto y usarlo. Sino que tambien permite implementar elementos algebraicos adicionales y optimizar el codigo a cualquiera que guste disponer de su tiempo para ello.\\\\
+Crece y se adapta a las necesidades de sus usuarios, como todo buen software deberia.
+
+\newpage
+
+\section{Agradecimientos}
+En esta seccion me gustaria dedicarles unas lineas a agradecerle a todos los profesores (alumnos ayudantes tambien por supuesto) con los que he tenido el placer de disfrutar aprendiendo durante mi estancia en la carrera.\\\\
+Agradecerles no solo por pasar el trabajo de impartirnos a nosotros, los estudiantes, los conocimientos necesarios para ser cientificos de la computacion, sino tambien por su dedicacion y empeño para formarnos como futuros profesionales en disimiles campos de investigacion y desarrollo. A ustedes que se lo merecen, ¡muchas gracias!
 
 \end{document}
