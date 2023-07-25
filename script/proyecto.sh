@@ -31,81 +31,86 @@ else
             echo "Error: $arg no es un argumento valido."
             echo "Posibles argumentos: 'run' 'clean' 'report' 'slides' 'show_report' y 'show_slides'."
         else
-            if [ $# -gt 1 ]; then
-                echo "Error: Solo se acepta '$arg' como argumento. Se ignora el resto."
-            else
+            cd ..
+            case $arg in
+            "run")
+                dotnet run
+                ;;
+            "clean")
+                rm -rf -v bin obj
+                cd informe
+                for item in *; do
+                    if [ "$item" != "informe.tex" ]; then
+                        rm -rf -v "$item"
+                    fi
+                done
                 cd ..
-                case $arg in
-                "run")
-                    dotnet run
-                    ;;
-                "clean")
-                    rm -rf -v bin obj
-                    cd informe
-                    for item in *; do
-                        if [ "$item" != "informe.tex" ]; then
-                            rm -rf -v "$item"
-                        fi
-                    done
-                    cd ..
-                    cd presentacion
-                    for item in *; do
-                        if [ "$item" != "presentacion.tex" ]; then
-                            rm -rf -v "$item"
-                        fi
-                    done
-                    cd ..
-                    ;;
-                "report")
-                    cd informe
+                cd presentacion
+                for item in *; do
+                    if [ "$item" != "presentacion.tex" ]; then
+                        rm -rf -v "$item"
+                    fi
+                done
+                cd ..
+                ;;
+            "report")
+                cd informe
+                pdflatex informe.tex
+                ;;
+            "slides")
+                cd presentacion
+                pdflatex presentacion.tex
+                ;;
+            "show_report")
+                cd informe
+                if ! [ -f "informe.pdf" ]; then
                     pdflatex informe.tex
+                fi
+
+                case $thisOS in
+                "msys" | "cygwin")
+                    start "$2" "informe.pdf"
                     ;;
-                "slides")
-                    cd presentacion
-                    pdflatex presentacion.tex
-                    ;;
-                "show_report")
-                    cd informe
-                    if ! [ -f "informe.pdf" ]; then
-                        pdflatex informe.tex
-                    fi
-                    case $thisOS in
-                    "msys" | "cygwin")
-                        start "informe.pdf"
-                        ;;
-                    "darwin")
+                "darwin")
+                    if [ -z "$2" ]; then
                         open "informe.pdf"
-                        ;;
-                    "linux-gnu")
-                        xdg-open "informe.pdf"
-                        ;;
-                    *)
-                        echo "Error: Sistema operativo desconocido. No se pudo abrir el archivo."
-                        ;;
-                    esac
-                    ;;
-                "show_slides")
-                    cd presentacion
-                    if ! [ -f "presentacion.pdf" ]; then
-                        pdflatex presentacion.tex
+                    else
+                        open -a "$2" "informe.pdf"
                     fi
-                    case $thisOS in
-                    "msys" | "cygwin")
-                        start "presentacion.pdf"
-                        ;;
-                    "darwin")
-                        open "presentacion.pdf"
-                        ;;
-                    "linux-gnu")
-                        xdg-open "presentacion.pdf"
-                        ;;
-                    *)
-                        echo "Error: Sistema operativo desconocido. No se pudo abrir el archivo."
-                        ;;
-                    esac
+                    ;;
+                "linux-gnu")
+                    xdg-open "$2" "informe.pdf"
+                    ;;
+                *)
+                    echo "Error: Sistema operativo desconocido. No se pudo abrir el archivo."
                     ;;
                 esac
-            fi
+                ;;
+            "show_slides")
+                cd presentacion
+                if ! [ -f "presentacion.pdf" ]; then
+                    pdflatex presentacion.tex
+                fi
+                case $thisOS in
+                "msys" | "cygwin")
+                    start "$2" "presentacion.pdf"
+                    ;;
+                "darwin")
+                    if [ -z "$2" ]; then
+                        open "presentacion.pdf"
+                    else
+                        open -a "$2" "presentacion.pdf"
+                    fi
+                    ;;
+                "linux-gnu")
+                    xdg-open "$2" "presentacion.pdf"
+                    ;;
+                *)
+                    echo "Error: Sistema operativo desconocido. No se pudo abrir el archivo."
+                    ;;
+                esac
+                ;;
+            esac
         fi
     fi
 fi
